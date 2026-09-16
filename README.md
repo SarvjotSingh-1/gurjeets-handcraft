@@ -1,4 +1,4 @@
-# Gurjeet's Handcraft's 🧶
+# Gurjeet's Handcraft 🧶
 
 > **"Handmade by Gurjeet."**  
 > An authentic, personal artisan website for handmade woolen scarves, gloves, caps/beanies, mufflers, socks, and bespoke custom woolen creations hand-knitted and crocheted with love.

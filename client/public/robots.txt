@@ -1,0 +1,24 @@
+# Robots.txt for Gurjeet's Handcraft
+# Natural handmade woolen knitwear & crochet creations
+
+User-agent: *
+Allow: /
+Allow: /shop
+Allow: /product/
+Allow: /custom-orders
+Allow: /our-story
+Allow: /how-its-made
+Allow: /contact
+Allow: /shipping-information
+Allow: /returns-information
+Allow: /privacy-policy
+Allow: /terms
+
+# Disallow private user accounts, administrative areas, and transient checkout flows
+Disallow: /admin
+Disallow: /account
+Disallow: /checkout
+Disallow: /order-confirmation/
+Disallow: /api/
+
+Sitemap: https://gurjeetshandcraft.com/sitemap.xml

@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-ivory: #FDFBF7;
+    --color-cream: #F6F1E8;
+    --color-warm-beige: #EBE3D5;
+    --color-soft-brown: #827265;
+    --color-earth-brown: #241C19;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #FDFBF7;
+    color: #241C19;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Editorial Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #241C19;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  /* Focus ring for accessibility */
+  :focus-visible {
+    outline: 2px solid #944737;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Selection style */
+  ::selection {
+    background-color: #EBE3D5;
+    color: #241C19;
+  }
+}
+
+/* Custom Artisan Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F1E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5CABE;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #827265;
+}
+
+/* Tactile Wool & Craft Textures */
+.bg-wool-grain {
+  background-color: #FDFBF7;
+  background-image: radial-gradient(#D5CABE 0.65px, transparent 0.65px);
+  background-size: 14px 14px;
+}
+
+.subtle-border {
+  border-color: #D5CABE;
+}
+
+/* Tap Target Enforcement */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}

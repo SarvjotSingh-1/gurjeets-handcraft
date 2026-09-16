@@ -220,6 +220,7 @@ const mountRoutes = (prefix) => {
 
 mountRoutes('/api');
 mountRoutes('/api/v1');
+mountRoutes('');
 
 // Global Error Handler
 app.use(errorHandler);

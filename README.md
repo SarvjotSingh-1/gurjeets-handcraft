@@ -134,8 +134,8 @@ ADMIN_PASSWORD=change_this_admin_password
 CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-BUSINESS_PHONE=7018183172
-BUSINESS_WHATSAPP=917018183172
+BUSINESS_PHONE=1234567891
+BUSINESS_WHATSAPP=911234567891
 ```
 
 ### Frontend (`client/.env.example`)

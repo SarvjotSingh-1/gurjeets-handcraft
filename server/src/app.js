@@ -38,8 +38,15 @@ app.use('/api/v1/uploads', express.static(uploadsDir));
 // Enforce standard HTTP security headers
 app.use(securityHeaders);
 
+const envOrigins = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((u) => u.trim().replace(/\/$/, ''))
+  .filter(Boolean);
+
 const allowedOrigins = [
-  process.env.CLIENT_URL || 'http://localhost:5173',
+  ...envOrigins,
+  'https://gurjeets-handcraft.vercel.app',
+  'http://localhost:5173',
   'http://localhost:5174',
   'http://localhost:5175',
   'http://127.0.0.1:5173',
@@ -47,18 +54,21 @@ const allowedOrigins = [
   'http://127.0.0.1:5175',
 ];
 
-// Strict CORS verification: reject untrusted origins
+// Strict CORS verification: allow configured origins and vercel deployments
 app.use(
   cors({
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
 
-      const isAllowed = allowedOrigins.some((allowed) => {
-        if (!allowed) return false;
-        return origin === allowed || origin.replace(/\/$/, '') === allowed.replace(/\/$/, '');
-      });
+      const isAllowed =
+        allowedOrigins.some((allowed) => {
+          if (!allowed) return false;
+          return origin === allowed || origin.replace(/\/$/, '') === allowed;
+        }) ||
+        origin.endsWith('.vercel.app') ||
+        (process.env.NODE_ENV !== 'production' && origin.startsWith('http://localhost:'));
 
-      if (isAllowed || (process.env.NODE_ENV !== 'production' && origin.startsWith('http://localhost:'))) {
+      if (isAllowed) {
         callback(null, true);
       } else {
         callback(new ApiError(403, `CORS policy blocked access from origin: ${origin}`));
@@ -69,6 +79,17 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+
+// Root health & welcome endpoint for status verification
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    business: "Gurjeet's Handcraft",
+    craft: 'Handmade Woolen Products (Crochet & Knit)',
+    health: '/api/health',
+    products: '/api/products',
+  });
+});
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
